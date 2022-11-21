@@ -1,0 +1,93 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.main_div {
+    width: 100%;
+    background-color: black;
+    color: #add8e6;
+    border: 2px black solid;
+    padding: 0.2vw;
+}
+
+.header_row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0px;
+    padding: 0px 10px;
+    font-size: 3vw;
+    background-color: rgba(173, 216, 230, 0.33);
+    justify-content: space-between;
+    align-items: center;
+    border: black solid;
+}
+
+.div_sensor_row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 3px;
+    gap: 4px;
+    align-content: stretch;
+    justify-content: space-evenly;
+}
+
+.divSensor {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+
+    background-color: rgba(173, 216, 230, 0.346);
+}
+
+.divSensor img{
+    display: none;
+    top:8vw;
+    padding-left: 0.2vw;
+    height: 4vw;
+    width: 4vw;
+}
+
+#ind_timeout{
+    display:inline;
+    top:4vw;
+    height: 4vw;
+    width: 4vw;
+}
+#ind_battery_weak{
+    display: inline;
+}
+
+.sensorName {
+    width: 100%;
+    padding: 0vw 0.1vw;
+    margin: 0.1vw;
+    font-size: 3vw;
+    text-align: center;
+    background-color: rgba(173, 216, 230, 0.1);
+}
+
+.sensorValue {
+    padding: 0.2vw;
+    margin: 0px;
+    font-size: 3vw;
+    text-align: right;
+}
+.inlineFlex{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0vw 0.2vw;
+    margin: 0.1vw 0.1vw;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(173, 216, 230, 0.2);
+}
