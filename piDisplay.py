@@ -26,7 +26,11 @@ def say_hello_py(x):
 sensors = []
 
 
-
+def close_callback(page, openSocks):
+    print("Window "+page+" closed")
+    for sock in openSocks:
+        print("remaining socket: ", sock)
+    
 def update_sensors():
     global sensors
     url = "http://192.168.55.220/addons/red/sensors"
@@ -51,7 +55,12 @@ def update_sensors():
 def run_eel():
     print("starting eel ...")
     eel.start(
-        "index.html", host="localhost", mode="chrome", port=8080, size=(800, 480), position=(0, 0)
+        "index.html", 
+        host="192.168.55.85",
+        mode="None",
+        shutdown_delay = 1000000,
+        close_callback=close_callback,
+        port=8080, 
     )
     
     

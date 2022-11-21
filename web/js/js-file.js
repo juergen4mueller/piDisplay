@@ -89,10 +89,10 @@ function update_values(name, temperature, humidity, battery, timeout) {
         const ind_battery_empty = document.getElementById(name+"ind_battery_empty");
         const ind_battery_weak = document.getElementById(name+"ind_battery_weak");
            
-        if (temperature < 20) { 
+        if (battery < 25) { 
             ind_battery_empty.style.display="inline";
         }
-        else if (temperature < 23) { 
+        else if (battery < 10) { 
             ind_battery_weak.style.display="inline";
         }
         else{
