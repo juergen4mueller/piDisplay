@@ -7,6 +7,20 @@ import requests
 import json
 import pprint
 from datetime import datetime
+import socket
+
+
+def get_ip_address():
+    """Ermittlung der IP-Adresse im Netzwerk
+
+    Returns:
+        str: lokale IP-Adresse
+    """
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    socket_ip = s.getsockname()[0]
+    s.close()
+    return socket_ip
 
 eel.init(os.path.join(sys.path[0], "web"))
 
@@ -56,7 +70,7 @@ def run_eel():
     print("starting eel ...")
     eel.start(
         "index.html", 
-        host="192.168.55.85",
+        host=get_ip_address(),
         mode="None",
         shutdown_delay = 1000000,
         close_callback=close_callback,
