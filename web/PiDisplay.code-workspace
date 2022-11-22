@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../../PiDisplay"
+		},
+		{
+			"name": "SMARS_",
+			"path": "../../../../../../../OneDrive/_Programmieren/PlatformIO/Projects/SMARS_"
+		},
+		{
+			"name": "SMARS_",
+			"path": "../../../../../OneDrive-Persönlich/_Programmieren/PlatformIO/Projects/SMARS_"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "PiDisplay"
+	}
+}

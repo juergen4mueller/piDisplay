@@ -1,30 +1,12 @@
 
-function updateText(text) {
-    const tAussenAct = document.getElementById("tAussenAct");
-    tAussenAct.innerHTML = text;
-}
-
-function startApp() {
-    eel.startApp();
-}
-
-function stopApp() {
-    eel.stopApp();
-}
-
-function setResolution(width, height) {
-    eel.setResolution(width, height)
-}
-
 eel.expose(updateTime)
 function updateTime(timestring) {
     const titleHead = document.getElementById("titleHead");
     titleHead.innerHTML = timestring
-
 }
 
-eel.expose(update_values); // Expose this function to Python
-function update_values(name, temperature, humidity, battery, timeout) {
+eel.expose(update_home_sensors); // Expose this function to Python
+function update_home_sensors(name, temperature, humidity, battery, timeout) {
     const elem = document.getElementById(name);
     const divSensors = document.getElementById("divSensors");
     if (elem == null) {
@@ -55,7 +37,6 @@ function update_values(name, temperature, humidity, battery, timeout) {
         section1.appendChild(img_reload)
 
 
-
         var section2 = document.createElement("section");
         section2.className="inlineFlex";
         divSensor.appendChild(section2);
@@ -77,7 +58,6 @@ function update_values(name, temperature, humidity, battery, timeout) {
         img_empty_bat.id=name +"ind_battery_empty";
         img_empty_bat.style.display="none";
         section2.appendChild(img_empty_bat)
-        
     }
     else {
         //console.log(`bekannter sensor : ${name} `);
@@ -109,4 +89,11 @@ function update_values(name, temperature, humidity, battery, timeout) {
     }
 }
 
-eel.say_hello_py("Javascript World!"); // Call a Python function
+
+eel.expose(update_weather_data); // Expose this function to Python
+function update_weather_data(time, temperature_2m_min, temperature_2m_max, sunrise, sunset, rain_sum, windspeed_10m_max, windgusts_10m_max, winddirection_10m_dominant, shortwave_radiation_sum)
+{
+
+}
+
+eel.request_data(0); // aktive anfrage der Daten bei Start oder Seitenwechsel, Init-Page = 0
