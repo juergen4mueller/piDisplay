@@ -26,15 +26,17 @@ eel.init(os.path.join(sys.path[0], "web"))
 
 class WebData():
     def __init__(self) -> None:
-        self._active_page = 0
+        self._active_page = ""
         self.weatherData = []
         self.homeSensors = []
+        self.holfuyData = None
         self.energySystem = {}
         self.init()
         
     def init(self):
         self.read_home_sensors()
         self.read_weather_data()
+        self.read_holfuy_data()
         
         
     def set_page(self, page):
@@ -47,7 +49,12 @@ class WebData():
             humidity = round(sensor.get("humidity", 0),0)
             battery = sensor.get("battery", 100)
             timeout = False
-            eel.update_home_sensors(name, temperature, humidity, battery, timeout)
+            eel.update_home_sensors(
+                name, 
+                temperature, 
+                humidity, 
+                battery, 
+                timeout)
         
     
     def send_weather_data_to_js(self):
@@ -63,24 +70,59 @@ class WebData():
             windgusts_10m_max = day.get("windgusts_10m_max")
             winddirection_10m_dominant = day.get("winddirection_10m_dominant")
             shortwave_radiation_sum = day.get("shortwave_radiation_sum")
-            eel.update_weather_data(time, temperature_2m_min, 
-                                    temperature_2m_max, 
-                                    sunrise, 
-                                    sunset, 
-                                    rain_sum, 
-                                    windspeed_10m_max, 
-                                    windgusts_10m_max, 
-                                    winddirection_10m_dominant, 
-                                    shortwave_radiation_sum)
+            eel.update_weather_data(
+                time, temperature_2m_min, 
+                temperature_2m_max, 
+                sunrise, 
+                sunset, 
+                rain_sum, 
+                windspeed_10m_max, 
+                windgusts_10m_max, 
+                winddirection_10m_dominant, 
+                shortwave_radiation_sum)
     
+    
+    def send_holfuy_data_to_js(self):
+        for holfuy in self.holfuyData:
+            name,_,_ = holfuy.get("stationName").partition(" ")
+            updateTime = holfuy.get("dateTime")
+            wind = holfuy.get("wind")
+            wSpeed = str(wind.get("speed"))
+            wGust = str(wind.get("gust"))
+            wMin = str(wind.get("min"))
+            wUnit = wind.get("unit")
+            wDirection = str(wind.get("direction"))
+            pressure = str(holfuy.get("pressure"))
+            temperature = str(holfuy.get("temperature"))
+            eel.update_holfuy_data(
+                name,
+                updateTime,
+                wSpeed,
+                wGust,
+                wMin,
+                wUnit,
+                wDirection,
+                pressure,
+                temperature
+            )
     
     def send_data_to_js(self):
-        if self._active_page == 0:
+        if self._active_page == "index":
+            print("send home sensor data")
             self.send_home_sensors_to_js()
-        elif self._active_page == 1:
-            self.send_weather_data_to_js()
+        elif self._active_page == "flugwetter":
+            print("send holfuy data")
+            #self.send_weather_data_to_js()
+            self.send_holfuy_data_to_js()
             
             
+    def read_holfuy_data(self):
+        pwd = "2N8aox0vMzpZS51"
+        stations = "400,407,1561"
+        url = "http://api.holfuy.com/live/?s="+stations+"&pw="+pwd+"&m=JSON&tu=C&su=km/h"    
+        response = requests.get(url)    
+        self.holfuyData = json.loads(response.content).get("measurements") #list mit 3 Stationen die Angefragt wurden
+    
     def read_home_sensors(self):
         url = "http://192.168.55.220/addons/red/sensors"
         response  = requests.get(url)
@@ -136,6 +178,7 @@ webData = WebData()
         
 @eel.expose
 def request_data(page):
+    print("Seite: ", page)
     webData.set_page(page)
     webData.send_data_to_js()
     
@@ -178,6 +221,10 @@ def main():
                 #alle 5s
                 webData.read_home_sensors()
                 webData.send_data_to_js()
+                
+            if (update_counter % 60) == 0:
+                webData.read_holfuy_data()
+                
             if (update_counter % 3600) == 0:
                 #alle 1h
                 webData.read_weather_data()

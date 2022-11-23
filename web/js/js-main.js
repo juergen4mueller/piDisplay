@@ -17,7 +17,7 @@ function update_home_sensors(name, temperature, humidity, battery, timeout) {
         tagName.id = name;
         tagName.innerHTML = name;
         tagName.className = "sensorName";
-        console.log(tagName)
+        //console.log(tagName)
         divSensor.appendChild(tagName);
 
         var section1 = document.createElement("section");
@@ -96,4 +96,11 @@ function update_weather_data(time, temperature_2m_min, temperature_2m_max, sunri
 
 }
 
-eel.request_data(0); // aktive anfrage der Daten bei Start oder Seitenwechsel, Init-Page = 0
+
+eel.expose(update_holfuy_data); // Expose this function to Python
+function update_holfuy_data(time, temperature_2m_min, temperature_2m_max, sunrise, sunset, rain_sum, windspeed_10m_max, windgusts_10m_max, winddirection_10m_dominant, shortwave_radiation_sum)
+{
+
+}
+
+eel.request_data("index"); // aktive anfrage der Daten bei Start oder Seitenwechsel, Init-Page = 0

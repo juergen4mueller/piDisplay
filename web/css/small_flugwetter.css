@@ -1,0 +1,79 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.main_div {
+    width: 100%;
+    background-color: black;
+    color: #add8e6;
+    border: 2px black solid;
+    padding: 0.2vw;
+}
+
+.header_row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0px;
+    padding: 0px 10px;
+    font-size: 3vw;
+    background-color: rgba(173, 216, 230, 0.33);
+    justify-content: space-between;
+    align-items: center;
+    border: black solid;
+}
+
+
+.div_holfuy_row{
+    margin-top: 0.7vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.col_holfuy{
+    width: 28vw;
+    background-color: darkblue;
+}
+
+.col_holfuy_description{
+    background-color: blueviolet;
+    width: 12vw;
+    text-align: right;
+}
+
+.windValues{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#divHolfuy h3{
+    padding: 0px;
+    margin: 0px;
+    font-size: 3.5vw;
+    text-align: center;
+}
+#divHolfuy h4{
+    padding: 0px;
+    margin: 1vw;
+    font-size: 3vw;
+    text-align: center;
+}
+
+
+.inlineFlex{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0vw 0.2vw;
+    margin: 0.1vw 0.1vw;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(173, 216, 230, 0.2);
+}
