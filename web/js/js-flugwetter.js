@@ -27,8 +27,6 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         nameOE.innerHTML= name;
         const updateTimeOE = document.getElementById("updateTimeOE"); 
         updateTimeOE.innerHTML= updateTime;
-        const wMinOE = document.getElementById("wMinOE") ;
-        wMinOE.innerHTML= wMin +" "+wUnit;
         const wSpeedOE = document.getElementById("wSpeedOE");
         wSpeedOE.innerHTML= wSpeed +" "+wUnit;
         const wGustOE = document.getElementById("wGustOE");
@@ -59,8 +57,6 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         nameBO.innerHTML = name;
         const updateTimeBO = document.getElementById("updateTimeBO");
         updateTimeBO.innerHTML = updateTime;
-        const wMinBO = document.getElementById("wMinBO");
-        wMinBO.innerHTML = wMin +" "+wUnit;
         const wSpeedBO = document.getElementById("wSpeedBO");
         wSpeedBO.innerHTML = wSpeed +" "+wUnit;
         const wGustBO = document.getElementById("wGustBO");
@@ -92,8 +88,6 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         nameSF.innerHTML = name;
         const updateTimeSF = document.getElementById("updateTimeSF");
         updateTimeSF.innerHTML = updateTime;
-        const wMinSF = document.getElementById("wMinSF");
-        wMinSF.innerHTML = wMin +" "+wUnit;
         const wSpeedSF = document.getElementById("wSpeedSF");
         wSpeedSF.innerHTML = wSpeed +" "+wUnit;
         const wGustSF = document.getElementById("wGustSF");
