@@ -11,7 +11,7 @@ function update_home_sensors(name, temperature, humidity, battery, timeout) {
 }
 
 eel.expose(update_weather_data); // Expose this function to Python
-function update_weather_data(time, temperature_2m_min, temperature_2m_max, sunrise, sunset, rain_sum, windspeed_10m_max, windgusts_10m_max, winddirection_10m_dominant, shortwave_radiation_sum)
+function update_weather_data(i, time, temperature_2m_min, temperature_2m_max, sunrise, sunset, rain_sum, windspeed_10m_max, windgusts_10m_max, winddirection_10m_dominant, shortwave_radiation_sum)
 {
 
 }
@@ -30,15 +30,29 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         const wMinOE = document.getElementById("wMinOE") ;
         wMinOE.innerHTML= wMin +" "+wUnit;
         const wSpeedOE = document.getElementById("wSpeedOE");
-        wSpeed.innerHTML= wSpeed +" "+wUnit;
+        wSpeedOE.innerHTML= wSpeed +" "+wUnit;
         const wGustOE = document.getElementById("wGustOE");
         wGustOE.innerHTML = wGust +" "+wUnit;
         const wDirectionOE = document.getElementById("wDirectionOE");
-        wDirection.innerHTML = wDirection;
+        wDirectionOE.innerHTML = wDirection;
         const pressureOE = document.getElementById("pressureOE");
         pressureOE.innerHTML = pressure;
         const temperatureOE = document.getElementById("temperatureOE");
         temperatureOE.innerHTML = temperature+" °C";
+        // color wind speed
+        if((wSpeed>=10)&&(wSpeed<15)){wSpeedOE.style.backgroundColor="green";}
+        else if((wSpeed>=15)&&(wSpeed<20)){wSpeedOE.style.backgroundColor="orange"}
+        else if(wSpeed>=20){wSpeedOE.style.backgroundColor="red"}
+        // color gust speed
+        if((wGust>=15)&&(wGust<25)){wGustOE.style.backgroundColor="green"}
+        else if((wGust>=25)&&(wGust<35)){wGustOE.style.backgroundColor="orange"}
+        else if(wGust>=35){wGustOE.style.backgroundColor="red"}
+        if((wDirection>290)||(wDirection<20)){
+            wDirectionOE.style.backgroundColor="green";
+        }
+        else if((wDirection>270)||(wDirection<40)){
+            wDirectionOE.style.backgroundColor="orange";
+        }
     }
     if(name == "Böhming"){
         const nameBO = document.getElementById("nameBO");
@@ -57,6 +71,20 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         pressureBO.innerHTML = pressure;
         const temperatureBO = document.getElementById("temperatureBO");
         temperatureBO.innerHTML = temperature+" °C";
+        // color wind speed
+        if((wSpeed>=10)&&(wSpeed<15)){wSpeedBO.style.backgroundColor="green"}
+        else if((wSpeed>=15)&&(wSpeed<20)){wSpeedBO.style.backgroundColor="orange"}
+        else if(wSpeed>=20){wSpeedBO.style.backgroundColor="red"}
+        // color gust speed
+        if((wGust>=15)&&(wGust<25)){wGustBO.style.backgroundColor="green"}
+        else if((wGust>=25)&&(wGust<35)){wGustBO.style.backgroundColor="orange"}
+        else if(wGust>=35){wGustBO.style.backgroundColor="red"}
+        if((wDirection>65)||(wDirection<145)){
+            wDirectionBO.style.backgroundColor="green";
+        }
+        else if((wDirection>45)||(wDirection<170)){
+            wDirectionBO.style.backgroundColor="orange";
+        }
     }
     
     if(name == "Schernfeld"){
@@ -76,6 +104,18 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         pressureSF.innerHTML = pressure;
         const temperatureSF = document.getElementById("temperatureSF");
         temperatureSF.innerHTML = temperature+" °C";
+        // color wind speed
+        if((wSpeed>=10)&&(wSpeed<15)){wSpeedSF.style.backgroundColor="green"}
+        else if((wSpeed>=15)&&(wSpeed<20)){wSpeedSF.style.backgroundColor="orange"}
+        else if(wSpeed>=20){wSpeedSF.style.backgroundColor="red"}
+        // color gust speed
+        if((wGust>=15)&&(wGust<25)){wGustSF.style.backgroundColor="green"}
+        else if((wGust>=25)&&(wGust<35)){wGustSF.style.backgroundColor="orange"}
+        else if(wGust>=35){wGustSF.style.backgroundColor="red"}
+        // color wind direction
+        if((wDirection>190)||(wDirection<250)){wDirectionSF.style.backgroundColor="green";}
+        else if((wDirection>170)||(wDirection<290)){wDirectionSF.style.backgroundColor="orange";}
+
     }
 
 }

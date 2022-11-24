@@ -31,7 +31,7 @@ html {
 
 
 .div_holfuy_row{
-    margin-top: 0.7vw;
+    margin-top: 1.7vw;
     display: flex;
     justify-content: space-around;
 }
@@ -39,11 +39,11 @@ html {
 
 .col_holfuy{
     width: 28vw;
-    background-color: darkblue;
+    background-color: rgba(173, 216, 230, 0.3);
 }
 
 .col_holfuy_description{
-    background-color: blueviolet;
+    background-color: rgba(173, 216, 230, 0.3);
     width: 12vw;
     text-align: right;
 }
@@ -65,6 +65,28 @@ html {
     margin: 1vw;
     font-size: 3vw;
     text-align: center;
+}
+
+.weather_forecast_row{
+    display: none;
+    justify-content: space-around;
+}
+
+.weather_forecast_col{
+    background-color: rgba(173, 216, 230, 0.3);
+    width: 16vw;
+    font-size: 3vw;
+}
+
+#weather_forecast_menu{
+    width: 8vw;
+}
+.weather_forecast_col h4{
+    padding: 0px;
+    margin: 0px;
+}
+.windDirection{
+    height: 16vw;
 }
 
 

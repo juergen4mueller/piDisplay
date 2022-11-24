@@ -58,7 +58,7 @@ class WebData():
         
     
     def send_weather_data_to_js(self):
-        for day in self.weatherData:
+        for i, day in enumerate(self.weatherData):
             time = day.get("time")
             temperature_2m_min = day.get("temperature_2m_min")
             temperature_2m_max = day.get("temperature_2m_max")
@@ -71,6 +71,7 @@ class WebData():
             winddirection_10m_dominant = day.get("winddirection_10m_dominant")
             shortwave_radiation_sum = day.get("shortwave_radiation_sum")
             eel.update_weather_data(
+                i,
                 time, temperature_2m_min, 
                 temperature_2m_max, 
                 sunrise, 
@@ -87,13 +88,13 @@ class WebData():
             name,_,_ = holfuy.get("stationName").partition(" ")
             updateTime = holfuy.get("dateTime")
             wind = holfuy.get("wind")
-            wSpeed = str(wind.get("speed"))
-            wGust = str(wind.get("gust"))
-            wMin = str(wind.get("min"))
+            wSpeed = wind.get("speed")
+            wGust = wind.get("gust")
+            wMin = wind.get("min")
             wUnit = wind.get("unit")
-            wDirection = str(wind.get("direction"))
-            pressure = str(holfuy.get("pressure"))
-            temperature = str(holfuy.get("temperature"))
+            wDirection = wind.get("direction")
+            pressure = holfuy.get("pressure")
+            temperature = holfuy.get("temperature")
             eel.update_holfuy_data(
                 name,
                 updateTime,
