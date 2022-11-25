@@ -41,19 +41,19 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         if((wSpeed>=10)&&(wSpeed<15)){wSpeedOE.style.backgroundColor="green";}
         else if((wSpeed>=15)&&(wSpeed<20)){wSpeedOE.style.backgroundColor="orange"}
         else if(wSpeed>=20){wSpeedOE.style.backgroundColor="red"}
-        else{wSpeedOE.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        //else{wSpeedOE.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
         // color gust speed
         if((wGust>=15)&&(wGust<25)){wGustOE.style.backgroundColor="green"}
         else if((wGust>=25)&&(wGust<35)){wGustOE.style.backgroundColor="orange"}
         else if(wGust>=35){wGustOE.style.backgroundColor="red"}
-        else{wGustOE.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        //else{wGustOE.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
         if((wDirection>290)||(wDirection<20)){
             wDirectionOE.style.backgroundColor="green";
         }
         else if((wDirection>270)||(wDirection<40)){
             wDirectionOE.style.backgroundColor="orange";
         }
-        else{wDirectionOE.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        //else{wDirectionOE.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
     }
     if(name == "Böhming"){
         const nameBO = document.getElementById("nameBO");
@@ -74,19 +74,19 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         if((wSpeed>=10)&&(wSpeed<15)){wSpeedBO.style.backgroundColor="green"}
         else if((wSpeed>=15)&&(wSpeed<20)){wSpeedBO.style.backgroundColor="orange"}
         else if(wSpeed>=20){wSpeedBO.style.backgroundColor="red"}
-        else{wSpeedBO.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        //else{wSpeedBO.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
         // color gust speed
         if((wGust>=15)&&(wGust<25)){wGustBO.style.backgroundColor="green"}
         else if((wGust>=25)&&(wGust<35)){wGustBO.style.backgroundColor="orange"}
         else if(wGust>=35){wGustBO.style.backgroundColor="red"}
-        else{wGustBO.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
-        if((wDirection>65)||(wDirection<145)){
+        //else{wGustBO.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        if((wDirection>65)&&(wDirection<145)){
             wDirectionBO.style.backgroundColor="green";
         }
-        else if((wDirection>45)||(wDirection<170)){
+        else if((wDirection>45)&&(wDirection<170)){
             wDirectionBO.style.backgroundColor="orange";
         }
-        else{wDirectionBO.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        //else{wDirectionBO.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
     }
     
     if(name == "Schernfeld"){
@@ -108,16 +108,16 @@ function update_holfuy_data(name, updateTime, wSpeed, wGust, wMin, wUnit, wDirec
         if((wSpeed>=10)&&(wSpeed<15)){wSpeedSF.style.backgroundColor="green"}
         else if((wSpeed>=15)&&(wSpeed<20)){wSpeedSF.style.backgroundColor="orange"}
         else if(wSpeed>=20){wSpeedSF.style.backgroundColor="red"}
-        else{wSpeedSF.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        //else{wSpeedSF.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
         // color gust speed
         if((wGust>=15)&&(wGust<25)){wGustSF.style.backgroundColor="green"}
         else if((wGust>=25)&&(wGust<35)){wGustSF.style.backgroundColor="orange"}
         else if(wGust>=35){wGustSF.style.backgroundColor="red"}
-        else{wGustSF.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        //else{wGustSF.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
         // color wind direction
-        if((wDirection>190)||(wDirection<250)){wDirectionSF.style.backgroundColor="green";}
-        else if((wDirection>170)||(wDirection<290)){wDirectionSF.style.backgroundColor="orange";}
-        else{wDirectionSF.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
+        if((wDirection>190)&&(wDirection<250)){wDirectionSF.style.backgroundColor="green";}
+        else if((wDirection>170)&&(wDirection<290)){wDirectionSF.style.backgroundColor="orange";}
+        //else{wDirectionSF.style.backgroundColor = "rgba(173, 216, 230, 0.3)"}
 
     }
 
